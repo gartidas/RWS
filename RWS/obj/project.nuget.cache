@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NzjsyOWrvFTHVWJhbltmSto1fKDL3APZzvAZHH48d53MPd8a+E6oqwJPwi+gncIlOy/M9zr5a56yKiBol3csPw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\garam\\source\\repos\\RWS\\RWS\\RWS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\garam\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
