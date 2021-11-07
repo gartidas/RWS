@@ -44,7 +44,6 @@ namespace Moravia.Homework
    
    class Program
    {
-   
       static void Main(string[] args)
       {
          var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\SourceFiles\\Document1.xml");
