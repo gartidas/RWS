@@ -2,6 +2,6 @@
 {
     interface ConverterProvider
     {
-        public string Convert(string input);
+        public Result<string> Convert(string input);
     }
 }

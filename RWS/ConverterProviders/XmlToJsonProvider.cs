@@ -1,21 +1,30 @@
 ﻿using Newtonsoft.Json;
 using RWS.Contracts;
+using System;
 using System.Xml.Linq;
 
 namespace RWS.ConverterProviders
 {
     public class XmlToJsonProvider : ConverterProvider
     {
-        public string Convert(string input)
+        public Result<string> Convert(string input)
         {
-            var xdoc = XDocument.Parse(input);
-            var doc = new
+            try
             {
-                Title = xdoc.Root.Element("title").Value,
-                Text = xdoc.Root.Element("text").Value
-            };
-            var serializedInput = JsonConvert.SerializeObject(doc);
-            return serializedInput;
+                var xDocument = XDocument.Parse(input);
+                var document = new
+                {
+                    Title = xDocument.Root.Element("title").Value,
+                    Text = xDocument.Root.Element("text").Value
+                };
+                var result = JsonConvert.SerializeObject(document);
+                return Result<string>.Success(result);
+            }
+            catch (Exception ex)
+            {
+                return Result<string>.Failure(ex.Message);
+            }
+
         }
     }
 }

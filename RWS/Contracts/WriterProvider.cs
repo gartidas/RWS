@@ -2,6 +2,6 @@
 {
     interface WriterProvider
     {
-        public void Write(string targetPath, string content);
+        public Result Write(string targetPath, string content);
     }
 }

@@ -2,6 +2,6 @@
 {
     interface ReaderProvider
     {
-        public string Read(string sourcePath);
+        public Result<string> Read(string sourcePath);
     }
 }
