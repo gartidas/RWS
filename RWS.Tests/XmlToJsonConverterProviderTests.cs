@@ -36,6 +36,7 @@ namespace RWS.Tests
 
             result.Succeeded.Should().BeFalse();
             result.Errors.Should().NotBeEmpty();
+            //Different kinds of errors should be tested (out of scope of this POC)
         }
     }
 }
