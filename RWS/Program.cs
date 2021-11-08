@@ -4,12 +4,13 @@ using RWS.Services;
 using RWS.WriterProviders;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace RWS
 {
     public class Program
     {
-        static async void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var sourcePath = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\SourceFiles\\Document1.xml");
             var targetPath = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\TargetFiles\\Document1.json");
