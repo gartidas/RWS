@@ -1,19 +1,19 @@
 ﻿using RWS.Contracts;
 using System;
 using System.IO;
-
+using System.Threading.Tasks;
 
 namespace RWS.ReaderProviders
 {
-    class FileReaderProvider : ReaderProvider
+    class FileReaderProvider : IReaderProvider
     {
-        public Result<string> Read(string sourcePath)
+        public async Task<Result<string>> Read(string sourcePath)
         {
             try
             {
                 using FileStream sourceStream = File.Open(sourcePath, FileMode.Open);
                 using var reader = new StreamReader(sourceStream);
-                string result = reader.ReadToEnd();
+                string result = await reader.ReadToEndAsync();
                 return Result<string>.Success(result);
             }
             catch (Exception ex)

@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace RWS.ConverterProviders
 {
-    public class XmlToJsonConverterProvider : ConverterProvider
+    public class XmlToJsonConverterProvider : IConverterProvider
     {
         public Result<string> Convert(string input)
         {

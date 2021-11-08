@@ -9,7 +9,7 @@ namespace RWS
 {
     class Program
     {
-        static void Main(string[] args)
+        static async void Main(string[] args)
         {
             var sourcePath = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\SourceFiles\\Document1.xml");
             var targetPath = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\TargetFiles\\Document1.json");
@@ -19,7 +19,7 @@ namespace RWS
             var readerProvider = new FileReaderProvider();
             var converterService = new ConverterService(converterProvider, writerProvider, readerProvider);
 
-            var convertResult = converterService.ConvertSourceToTarget(sourcePath, targetPath);
+            var convertResult = await converterService.ConvertSourceToTarget(sourcePath, targetPath);
             if (convertResult.Failed)
                 Console.WriteLine(convertResult.Errors);
         }

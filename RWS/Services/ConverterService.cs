@@ -1,23 +1,24 @@
 ﻿using RWS.Contracts;
+using System.Threading.Tasks;
 
 namespace RWS.Services
 {
     class ConverterService
     {
-        private readonly ConverterProvider _converterProvider;
-        private readonly WriterProvider _writerProvider;
-        private readonly ReaderProvider _readerProvider;
+        private readonly IConverterProvider _converterProvider;
+        private readonly IWriterProvider _writerProvider;
+        private readonly IReaderProvider _readerProvider;
 
-        public ConverterService(ConverterProvider converterProvider, WriterProvider writerProvider, ReaderProvider readerProvider)
+        public ConverterService(IConverterProvider converterProvider, IWriterProvider writerProvider, IReaderProvider readerProvider)
         {
             _converterProvider = converterProvider;
             _writerProvider = writerProvider;
             _readerProvider = readerProvider;
         }
 
-        public Result ConvertSourceToTarget(string sourcePath, string targetPath)
+        public async Task<Result> ConvertSourceToTarget(string sourcePath, string targetPath)
         {
-            var readResult = _readerProvider.Read(sourcePath);
+            var readResult = await _readerProvider.Read(sourcePath);
             if (readResult.Failed)
                 return Result.Failure(readResult.Errors);
 
@@ -25,11 +26,11 @@ namespace RWS.Services
             if (convertResult.Failed)
                 return Result.Failure(convertResult.Errors);
 
-            var writeResult = _writerProvider.Write(targetPath, convertResult.Data);
+            var writeResult = await _writerProvider.Write(targetPath, convertResult.Data);
             if (writeResult.Failed)
                 return Result.Failure(writeResult.Errors);
-            else
-                return Result.Success();
+
+            return Result.Success();
         }
     }
 }

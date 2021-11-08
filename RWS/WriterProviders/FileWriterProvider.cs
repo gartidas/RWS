@@ -1,18 +1,19 @@
 ﻿using RWS.Contracts;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace RWS.WriterProviders
 {
-    class FileWriterProvider : WriterProvider
+    class FileWriterProvider : IWriterProvider
     {
-        public Result Write(string targetPath, string content)
+        public async Task<Result> Write(string targetPath, string content)
         {
             try
             {
                 using FileStream targetStream = File.Open(targetPath, FileMode.Create, FileAccess.Write);
                 using var writer = new StreamWriter(targetStream);
-                writer.Write(content);
+                await writer.WriteAsync(content);
                 return Result.Success();
             }
             catch (Exception ex)
