@@ -2,7 +2,7 @@
 
 namespace RWS.Contracts
 {
-    interface IReaderProvider
+    public interface IReaderProvider
     {
         public Task<Result<string>> Read(string sourcePath);
     }

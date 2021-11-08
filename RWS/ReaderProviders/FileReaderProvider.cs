@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RWS.ReaderProviders
 {
-    class FileReaderProvider : IReaderProvider
+    public class FileReaderProvider : IReaderProvider
     {
         public async Task<Result<string>> Read(string sourcePath)
         {

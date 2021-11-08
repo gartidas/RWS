@@ -7,7 +7,7 @@ using System.IO;
 
 namespace RWS
 {
-    class Program
+    public class Program
     {
         static async void Main(string[] args)
         {

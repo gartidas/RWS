@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RWS.WriterProviders
 {
-    class FileWriterProvider : IWriterProvider
+    public class FileWriterProvider : IWriterProvider
     {
         public async Task<Result> Write(string targetPath, string content)
         {
